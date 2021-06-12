@@ -13,5 +13,6 @@ export default function Smile() {
 const styles = StyleSheet.create({
   svg: {
     marginTop: 50,
+    marginLeft: 30,
   },
 })

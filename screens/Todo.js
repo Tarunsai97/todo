@@ -14,6 +14,7 @@ const Todo = (props) => {
   // declaring states
   const [input, setInput] = React.useState('')
   const [todo, setTodo] = React.useState([])
+  const [activate, setActivate] = React.useState(false)
 
   //handling Text
   const handleText = (textInput) => {
@@ -48,6 +49,7 @@ const Todo = (props) => {
         style={styles.btn}
         activeOpacity={0.6}
         onPress={handleOnPress}
+        disabled={input.length === 0}
       >
         <Text style={styles.btnText}>ADD</Text>
       </TouchableOpacity>

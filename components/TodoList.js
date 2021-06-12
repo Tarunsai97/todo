@@ -1,18 +1,31 @@
 import React from 'react'
-import { Text, StyleSheet, View, TouchableOpacity } from 'react-native'
+import {
+  Text,
+  StyleSheet,
+  View,
+  TouchableOpacity,
+  CheckBox,
+} from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
+import { set } from 'react-native-reanimated'
 
 const TodoList = (props) => {
-  console.log(props.val)
+  const [isSelected, setIsSeleceted] = React.useState(false)
 
   return (
     <View style={styles.item}>
       <View style={styles.textContainer}>
-        <Text style={props.val ? styles.strikeStyle : {}}>{props.message}</Text>
+        <Text style={isSelected ? styles.strikeStyle : {}}>
+          {props.message}
+        </Text>
       </View>
-      <TouchableOpacity onPress={props.handleTick}>
-        <Ionicons name='checkbox' size={23} color='green' />
-      </TouchableOpacity>
+      <View style={styles.checkboxContainer}>
+        <CheckBox
+          value={isSelected}
+          onValueChange={setIsSeleceted}
+          style={styles.checkbox}
+        />
+      </View>
       <TouchableOpacity onPress={props.onTouch.bind(this, props.pid)}>
         <Ionicons name='trash-bin' size={23} color='crimson' />
       </TouchableOpacity>
@@ -22,13 +35,15 @@ const TodoList = (props) => {
 
 const styles = StyleSheet.create({
   item: {
-    padding: 12,
+    padding: 8,
     backgroundColor: 'white',
     borderRadius: 20,
     margin: 10,
     flexDirection: 'row',
     borderWidth: 3,
     borderColor: '#DEABF7',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 
   data: {},
@@ -39,6 +54,12 @@ const styles = StyleSheet.create({
   strikeStyle: {
     textDecorationLine: 'line-through',
     textDecorationStyle: 'solid',
+  },
+  checkbox: {
+    alignSelf: 'center',
+  },
+  checkboxContainer: {
+    // marginBottom: 10,
   },
 })
 

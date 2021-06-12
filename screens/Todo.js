@@ -14,7 +14,6 @@ const Todo = (props) => {
   // declaring states
   const [input, setInput] = React.useState('')
   const [todo, setTodo] = React.useState([])
-  const [check, setCheck] = React.useState(false)
 
   //handling Text
   const handleText = (textInput) => {
@@ -31,9 +30,9 @@ const Todo = (props) => {
   }
 
   // handle check
-  const handleOnCheck = () => {
-    setCheck(!check)
-  }
+  // const handleOnCheck = (itemId) => {
+  //   setCheck(!check)
+  // }
   // console.log(todo)
 
   // console.log(input)
@@ -59,8 +58,8 @@ const Todo = (props) => {
             <TodoList
               message={itemData.item.value}
               onTouch={handleDelete.bind(this, itemData.item.id)}
-              handleTick={handleOnCheck}
-              val={check}
+              // handleTick={handleOnCheck.bind(this.itemData.item.id)}
+              // val={check}
             />
           )
         }}

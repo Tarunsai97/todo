@@ -1,5 +1,12 @@
 import React from 'react'
-import { View, Text, Button, StyleSheet, Image } from 'react-native'
+import {
+  View,
+  Text,
+  Button,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+} from 'react-native'
 import Smile from '../constants/Smile'
 import Todo from './Todo'
 
@@ -7,24 +14,16 @@ const LogIn = (props) => {
   return (
     <View style={styles.screen}>
       <View style={styles.svgContainer}>
-        <Smile />
-        <View style={styles.textContainer}>
-          <Text style={styles.quote1}>"Rest at the end not in the middle"</Text>
-          <Text style={styles.quote2}>
-            "Many will start fast, Few will finish strong"
-          </Text>
-        </View>
-
         <Text style={styles.title}>TODO APP</Text>
+        <Smile />
 
-        <Button
-          title='Login'
+        <TouchableOpacity
           onPress={() => {
             props.navigation.navigate({ routeName: 'TodoScreen' })
           }}
-          color='#15d140'
-          style={styles.btn}
-        />
+        >
+          <Text>NAVIGATE</Text>
+        </TouchableOpacity>
       </View>
     </View>
   )
@@ -37,7 +36,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#bef7cb',
+    backgroundColor: 'white',
   },
   svgContainer: {
     paddingTop: 20,

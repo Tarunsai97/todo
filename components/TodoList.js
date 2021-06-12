@@ -3,12 +3,14 @@ import { Text, StyleSheet, View, TouchableOpacity } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 
 const TodoList = (props) => {
+  console.log(props.val)
+
   return (
     <View style={styles.item}>
       <View style={styles.textContainer}>
-        <Text style={styles.data}>{props.message}</Text>
+        <Text style={props.val ? styles.strikeStyle : {}}>{props.message}</Text>
       </View>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={props.handleTick}>
         <Ionicons name='checkbox' size={23} color='green' />
       </TouchableOpacity>
       <TouchableOpacity onPress={props.onTouch.bind(this, props.pid)}>
@@ -33,6 +35,10 @@ const styles = StyleSheet.create({
   iconContainers: {},
   textContainer: {
     width: '80%',
+  },
+  strikeStyle: {
+    textDecorationLine: 'line-through',
+    textDecorationStyle: 'solid',
   },
 })
 

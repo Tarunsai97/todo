@@ -7,12 +7,14 @@ import {
   TouchableOpacity,
   FlatList,
 } from 'react-native'
+import { set } from 'react-native-reanimated'
 import TodoList from '../components/TodoList'
 
 const Todo = (props) => {
   // declaring states
   const [input, setInput] = React.useState('')
   const [todo, setTodo] = React.useState([])
+  const [check, setCheck] = React.useState(false)
 
   //handling Text
   const handleText = (textInput) => {
@@ -26,6 +28,11 @@ const Todo = (props) => {
   const handleOnPress = () => {
     setTodo([...todo, { id: new Date().getTime().toString(), value: input }])
     setInput('')
+  }
+
+  // handle check
+  const handleOnCheck = () => {
+    setCheck(!check)
   }
   // console.log(todo)
 
@@ -52,6 +59,8 @@ const Todo = (props) => {
             <TodoList
               message={itemData.item.value}
               onTouch={handleDelete.bind(this, itemData.item.id)}
+              handleTick={handleOnCheck}
+              val={check}
             />
           )
         }}

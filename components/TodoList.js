@@ -8,18 +8,10 @@ const TodoList = (props) => {
       <View style={styles.textContainer}>
         <Text style={styles.data}>{props.message}</Text>
       </View>
-      <TouchableOpacity
-        onPress={() => {
-          console.log('strike')
-        }}
-      >
+      <TouchableOpacity>
         <Ionicons name='checkbox' size={23} color='green' />
       </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => {
-          console.log('Deleted')
-        }}
-      >
+      <TouchableOpacity onPress={props.onTouch.bind(this, props.pid)}>
         <Ionicons name='trash-bin' size={23} color='crimson' />
       </TouchableOpacity>
     </View>

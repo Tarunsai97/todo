@@ -18,7 +18,10 @@ const Todo = (props) => {
   const handleText = (textInput) => {
     setInput(textInput)
   }
-
+  //handleDelete
+  const handleDelete = (itemId) => {
+    setTodo(todo.filter((item) => item.id !== itemId))
+  }
   //handle on press
   const handleOnPress = () => {
     setTodo([...todo, { id: new Date().getTime().toString(), value: input }])
@@ -45,7 +48,12 @@ const Todo = (props) => {
       <FlatList
         data={todo}
         renderItem={(itemData) => {
-          return <TodoList message={itemData.item.value} />
+          return (
+            <TodoList
+              message={itemData.item.value}
+              onTouch={handleDelete.bind(this, itemData.item.id)}
+            />
+          )
         }}
       />
     </View>
